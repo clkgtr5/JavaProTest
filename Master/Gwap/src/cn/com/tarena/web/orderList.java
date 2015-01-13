@@ -16,7 +16,7 @@ import cn.com.tarena.service.orderListServer;
 
 public class orderList extends HttpServlet{
 
-	int n=0;
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		resp.setContentType("text/html;charset=UTF-8");
@@ -124,7 +124,7 @@ public class orderList extends HttpServlet{
 		out.println("				<td valign=middle align=center height=25 background=\"images/bg2.gif\"><font color=\"#ffffff\"><b>付款方式</b></font></td>");
 		out.println("				<td valign=middle align=center height=25 background=\"images/bg2.gif\"><font color=\"#ffffff\"><b>操作</b></font></td>");
 		out.println("			</tr>");
-		
+		int n=0;
 		for(Iterator<Orders> it = orderList.iterator();it.hasNext();){
 			Orders order = it.next();
 			n++;
