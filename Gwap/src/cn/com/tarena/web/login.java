@@ -121,7 +121,7 @@ public class login extends HttpServlet{
 		out.println("				<td colspan=\"4\" class=tablebody2 align=\"center\" valign=\"middle\" width=\"60%\">");
 		out.println("				");
 		out.println("				");
-		out.println("						<input  type=submit value=µÇÂ½>");
+		out.println("						<input  type=\"submit\" value=\"µÇÂ½\">");
 		out.println("					");
 		out.println("     					");
 		out.println("				 </td>");
@@ -161,7 +161,7 @@ public class login extends HttpServlet{
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
+		doGet(req,resp);
 	}
 
 }

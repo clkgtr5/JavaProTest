@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.com.tarena.pojo.Category;
-import cn.com.tatena.service.cateGoryService;
+import cn.com.tarena.service.cateGoryService;
 
 public class CateGoryServiceImpl implements cateGoryService {
 

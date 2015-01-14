@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.com.tarena.pojo.Contactinfo;
-import cn.com.tatena.service.contactInfoService;
+import cn.com.tarena.service.contactInfoService;
 
 public class ContactInfoServiceImpl implements contactInfoService {
 

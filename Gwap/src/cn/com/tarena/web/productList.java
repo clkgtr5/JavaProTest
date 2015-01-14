@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.com.tarena.pojo.Product;
+import cn.com.tarena.service.ProductListService;
 import cn.com.tarena.service.impl.productServiceImpl;
-import cn.com.tatena.service.ProductListService;
 
 public class productList extends HttpServlet{
 

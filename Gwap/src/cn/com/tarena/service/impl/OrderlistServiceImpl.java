@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.com.tarena.pojo.Orders;
-import cn.com.tatena.service.orderListService;
+import cn.com.tarena.service.orderListService;
 
 public class OrderlistServiceImpl implements orderListService {
 

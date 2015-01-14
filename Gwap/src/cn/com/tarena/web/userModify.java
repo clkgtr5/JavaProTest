@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import cn.com.tarena.pojo.Contactinfo;
 import cn.com.tarena.pojo.Product;
 import cn.com.tarena.pojo.users;
+import cn.com.tarena.service.contactInfoService;
+import cn.com.tarena.service.userListService;
 import cn.com.tarena.service.impl.ContactInfoServiceImpl;
 import cn.com.tarena.service.impl.UserServiceImpl;
-import cn.com.tatena.service.contactInfoService;
-import cn.com.tatena.service.userListService;
 
 
 
@@ -267,12 +267,6 @@ public class userModify extends HttpServlet{
 	}
 	
 	
-	
-	private void touserModify(HttpServletResponse resp, List contactInfoList,String userid,List usersList)
-			throws IOException {
-				
-		
-	}
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {

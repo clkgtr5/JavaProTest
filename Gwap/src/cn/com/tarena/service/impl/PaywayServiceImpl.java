@@ -9,8 +9,8 @@ import java.util.List;
 
 import cn.com.tarena.pojo.Payway;
 import cn.com.tarena.pojo.users;
-import cn.com.tatena.service.ProductListService;
-import cn.com.tatena.service.payWayService;
+import cn.com.tarena.service.ProductListService;
+import cn.com.tarena.service.payWayService;
 
 public class PaywayServiceImpl implements payWayService {
 

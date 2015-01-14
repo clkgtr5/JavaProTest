@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cn.com.tarena.pojo.users;
-import cn.com.tatena.service.userListService;
+import cn.com.tarena.service.userListService;
 
 public class UserServiceImpl implements userListService {
 

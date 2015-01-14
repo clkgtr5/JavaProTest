@@ -1,4 +1,4 @@
-package cn.com.tatena.service;
+package cn.com.tarena.service;
 
 import java.util.List;
 

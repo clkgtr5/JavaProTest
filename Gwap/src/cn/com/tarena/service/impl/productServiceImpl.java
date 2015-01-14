@@ -9,7 +9,7 @@ import java.util.List;
 
 import cn.com.tarena.pojo.Product;
 import cn.com.tarena.pojo.users;
-import cn.com.tatena.service.ProductListService;
+import cn.com.tarena.service.ProductListService;
 
 public class productServiceImpl implements ProductListService {
 
