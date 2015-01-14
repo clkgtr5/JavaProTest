@@ -26,63 +26,12 @@ public class userModify extends HttpServlet{
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		try{
-			String s=req.getParameter("id");
-		
-						
-			String userid = s;
-			//System.out.println(s);
-			contactInfoService contactService = new ContactInfoServiceImpl();
-						
-			List contactInfoList = contactService.getContactInfoList();
-			
-			userListService userService = new UserServiceImpl();
-			
-			List usersList = userService.getuserList();
-			
-			/*Contactinfo contactinfo  = null;
-			users user = null;
-			for(int i = 0; i<usersList.size() ; i++){
-				user = (users)usersList.get(i);
-				if(user.getUserName().equals(userid))
-					break;
-			}
-			for(int i = 0; i<contactInfoList.size() ; i++){
-				contactinfo = (Contactinfo)contactInfoList.get(i);
-				if(contactinfo.getUserid().equals(userid))
-					break;
-			}
-			System.out.println("contactinfo: user:"+contactinfo.getUserid()+"contactid:"+contactinfo.getUserid());
-			System.out.println("user:"+user.getUserName());*/
-
-			touserModify(resp, contactInfoList,userid,usersList);
-		} catch (Exception e){
-			toError(resp,e.getMessage());
-		}
-	}
-	
-	private void toError(HttpServletResponse resp, String message) throws IOException {
-		PrintWriter out = resp.getWriter();
-		
-		out.println("<html>");
-		out.println("<head>");
-		out.println("	<title>Error</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("	<h2 align=\"center\">Error</h2>");
-		out.println("	<hr>");
-		out.println("	System Error," + message + "!");
-		out.println("</body>");
-		out.println("</html>");
-		
-		out.close();
-	}
-	
-	private void touserModify(HttpServletResponse resp, List contactInfoList,String userid,List usersList)
-			throws IOException {
-				
+		String userid=req.getParameter("id");
 		resp.setContentType("text/html;charset=UTF-8");
-		resp.setCharacterEncoding("UTF-8");
+		
+		List usersList = (List)req.getAttribute("usersList");
+		List contactInfoList = (List)req.getAttribute("contactInfoList");
+				
 		PrintWriter out = resp.getWriter();
 		//导入使用数据
 		Contactinfo contactinfo  = null;
@@ -124,16 +73,16 @@ public class userModify extends HttpServlet{
 		out.println("						<tr>");
 		out.println("							<td width=\"5%\"></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"productList\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toproductList.asp\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"userManager\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"touserManager.asp\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"orderList\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"shoppingCart\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"shoppingCart\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toorderList.asp\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"productList\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toproductList.asp\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("						</tr>");
 		out.println("					</table>");
 		out.println("				</td>");
@@ -315,6 +264,14 @@ public class userModify extends HttpServlet{
 		out.println("");
 		
 		out.close();
+	}
+	
+	
+	
+	private void touserModify(HttpServletResponse resp, List contactInfoList,String userid,List usersList)
+			throws IOException {
+				
+		
 	}
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)

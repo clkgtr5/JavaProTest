@@ -23,44 +23,13 @@ import cn.com.tatena.service.contactInfoService;
 import cn.com.tatena.service.orderListService;
 
 public class orderDetail extends HttpServlet{
-	List contactInfoList=null;
+	//List contactInfoList=null;
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		try{
-			String orderid=req.getParameter("id");
-			//String s=req.getQueryString();
-			//System.out.print(orderid);
-			orderListService orderlistserver = new OrderlistServiceImpl();
-			contactInfoService contactInfoserver=new ContactInfoServiceImpl();
-			
-			List productDetailList = orderlistserver.getOrderList();
-			contactInfoList=contactInfoserver.getContactInfoList();
-			 
-			toproductDetail(resp, productDetailList, orderid);
-		} catch (Exception e){
-			//toError(resp,e.getMessage());
-		}
-	}
-	private void toError(HttpServletResponse resp, String message) throws IOException {
-		PrintWriter out = resp.getWriter();
-		
-		out.println("<html>");
-		out.println("<head>");
-		out.println("	<title>Error</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("	<h2 align=\"center\">Error</h2>");
-		out.println("	<hr>");
-		out.println("	System Error," + message + "!");
-		out.println("</body>");
-		out.println("</html>");
-		
-		out.close();
-	}
-
-	private void toproductDetail(HttpServletResponse resp, List orderList,String orderid)
-			throws IOException {
+		String orderid=req.getParameter("id");
+		List orderList =(List)req.getAttribute("productDetailList");
+		List contactInfoList =(List)req.getAttribute("contactInfoList");
 		int oid=0;
 		try{
 			oid = Integer.parseInt(orderid);
@@ -99,16 +68,16 @@ public class orderDetail extends HttpServlet{
 		out.println("						<tr>");
 		out.println("							<td width=\"5%\"></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"productList\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toproductList.asp\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"userManager\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"touserManager.asp\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"shoppingCart\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toshoppingCart.asp\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"orderList\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toorderList.asp\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"productList\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toproductList.asp\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("						</tr>");
 		out.println("					</table>");
 		out.println("				</td>");
@@ -153,8 +122,7 @@ public class orderDetail extends HttpServlet{
 			order = it.next();
 			if(order.getOrderid() == oid)
 			{
-				uid=order.getUserid();
-			//System.out.println(order.getOrderid());
+				uid=order.getUserid();		
 				break;}
 		}
 		for(int j=0;j<contactInfoList.size();j++)

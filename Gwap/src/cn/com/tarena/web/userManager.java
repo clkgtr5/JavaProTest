@@ -27,39 +27,9 @@ public class userManager extends HttpServlet{
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-					
-		try{
-			userListService userService = new UserServiceImpl();
-						
-			List usersList = userService.getuserList();
-
-			toUserManager(resp, usersList);
-		} catch (Exception e){
-			toError(resp,e.getMessage());
-		}
-		
-	}
-	private void toError(HttpServletResponse resp, String message) throws IOException {
-		
-		PrintWriter out = resp.getWriter();
-		
-		out.println("<html>");
-		out.println("<head>");
-		out.println("	<title>Error</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("	<h2 align=\"center\">Error</h2>");
-		out.println("	<hr>");
-		out.println("	System Error," + message + "!");
-		out.println("</body>");
-		out.println("</html>");
-		
-		out.close();
-	}
-
-	private void toUserManager(HttpServletResponse resp, List usersList)
-			throws IOException {
 		resp.setContentType("text/html;charset=UTF-8");
+		
+		List usersList = (List)req.getAttribute("usersList");
 		PrintWriter out = resp.getWriter();
 		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
 		out.println("<html>");
@@ -87,16 +57,16 @@ public class userManager extends HttpServlet{
 		out.println("						<tr>");
 		out.println("							<td width=\"5%\"></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"productList\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toproductList.asp\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"userManager\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"touserManager.asp\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"shoppingCart\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toshoppingCart.asp\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"orderList\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toorderList.asp\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"productList\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toproductList.asp\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("						</tr>");
 		out.println("					</table>");
 		out.println("				</td>");
@@ -164,7 +134,7 @@ public class userManager extends HttpServlet{
 			out.println("				</td>");
 			out.println("				<td class=tablebody2 valign=\"middle\" align=\"center\" height=\"25\"  width=\"35%\">");
 			out.println("					");
-			out.println("						<input type=\"button\" value=\"ÐÞ¸Ä\" onclick=\"javascript:window.location='userModify?id="+user.getUserName()+"';\" /> ");
+			out.println("						<input type=\"button\" value=\"ÐÞ¸Ä\" onclick=\"javascript:window.location='touserModify.asp?id="+user.getUserName()+"';\" /> ");
 			out.println("						<input type=\"button\" value=\"É¾³ý\"  />");
 			out.println("				</td>				");
 			out.println("			</tr>");
@@ -198,8 +168,11 @@ public class userManager extends HttpServlet{
 		out.println("</html>");
 		out.println("");
 		
-		out.close();
+		out.close();		
+		
+		
 	}
+		
 
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)

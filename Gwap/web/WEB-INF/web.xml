@@ -9,8 +9,6 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  <!--web注册-->
   <servlet>
     <servlet-name>orderDetail</servlet-name>
     <servlet-class>cn.com.tarena.web.orderDetail</servlet-class>
@@ -91,7 +89,7 @@
     <servlet-name>orderList</servlet-name>
     <url-pattern>/orderList</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <servlet-name>userRegister</servlet-name>
     <servlet-class>cn.com.tarena.web.userRegister</servlet-class>
   </servlet>
@@ -99,5 +97,20 @@
     <servlet-name>userRegister</servlet-name>
     <url-pattern>/userRegister</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>ErrorServlet</servlet-name>
+    <servlet-class>cn.com.tarena.web.errorServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ControllerServlet</servlet-name>
+    <servlet-class>cn.com.tarena.web.controller.controllerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ErrorServlet</servlet-name>
+    <url-pattern>/error</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ControllerServlet</servlet-name>
+    <url-pattern>*.asp</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -19,39 +19,7 @@ public class orderList extends HttpServlet{
 	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		resp.setContentType("text/html;charset=UTF-8");
-		resp.setCharacterEncoding("UTF-8");
-		try{
-			orderListService orderliste = new OrderlistServiceImpl();
-			
-			List orderlist = orderliste.getOrderList();
-
-			toStudentList(resp, orderlist);
-		} catch (Exception e){
-			toError(resp,e.getMessage());
-		}
-		
-	}
-
-	private void toError(HttpServletResponse resp, String message) throws IOException {
-		PrintWriter out = resp.getWriter();
-		
-		out.println("<html>");
-		out.println("<head>");
-		out.println("	<title>Error</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("	<h2 align=\"center\">Error</h2>");
-		out.println("	<hr>");
-		out.println("	System Error," + message + "!");
-		out.println("</body>");
-		out.println("</html>");
-		
-		out.close();
-	}
-
-	private void toStudentList(HttpServletResponse resp, List orderList)
-			throws IOException {
+		List orderList =(List)req.getAttribute("orderList");
 		resp.setCharacterEncoding("UTF-8");
 		PrintWriter out = resp.getWriter();
 		
@@ -79,16 +47,16 @@ public class orderList extends HttpServlet{
 		out.println("						<tr>");
 		out.println("							<td width=\"5%\"></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"productList\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toproductList.asp\"><img name=\"Image1\" border=\"0\" src=\"images/index.gif\" width=\"90\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"userManager\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"touserManager.asp\"><img name=\"Image2\" border=\"0\" src=\"images/reg.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"shoppingCart\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toshoppingCart.asp\"><img name=\"Image4\" border=\"0\" src=\"images/cart.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"orderList\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toorderList.asp\"><img name=\"Image5\" border=\"0\" src=\"images/order.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("");
 		out.println("							");
-		out.println("          <td width=\"10%\"><a href=\"productList\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
+		out.println("          <td width=\"10%\"><a href=\"toproductList.asp\"><img name=\"Image6\" border=\"0\" src=\"images/exit.gif\" width=\"92\" height=\"36\"></a></td>");
 		out.println("						</tr>");
 		out.println("					</table>");
 		out.println("				</td>");
@@ -135,8 +103,8 @@ public class orderList extends HttpServlet{
 		out.println("				<td class=tablebody1 valign=middle align=center>pending</td>");
 		out.println("				<td class=tablebody2 valign=middle align=left>&nbsp;&nbsp;货到付款 </td>");
 		out.println("				<td class=tablebody1 valign=middle align=center>");
-		out.println("					<input type=\"button\" value=\"删除\" onclick=\"javascript:window.location='orderList';\">&nbsp;");
-		out.println("					<input type=\"button\" value=\"明细\" onclick=\"javascript:window.location='orderDetail?id="+order.getOrderid()+"';\">");
+		out.println("					<input type=\"button\" value=\"删除\" onclick=\"javascript:window.location='toorderList.asp';\">&nbsp;");
+		out.println("					<input type=\"button\" value=\"明细\" onclick=\"javascript:window.location='toorderdetail.asp?id="+order.getOrderid()+"';\">");
 		out.println("				</td>");
 		out.println("			</tr>");
 		}
