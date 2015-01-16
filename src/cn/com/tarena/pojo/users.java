@@ -1,8 +1,8 @@
 package cn.com.tarena.pojo;
 
 public class users {
-    private String userid;
-	
+	private String userid;
+
 	private String password;
 
 	public String getUserName() {
